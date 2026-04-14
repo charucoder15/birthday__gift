@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Puzzle 🎁</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  width:360px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+input{
+  width:90%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+#msg{
+  margin-top:10px;
+  font-weight:bold;
+  min-height:20px;
+}
+
+#giftBox{
+  display:none;
+  margin-top:20px;
+}
+
+.gift{
+  background:#ff4d6d;
+  color:white;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+#giftContent{
+  display:none;
+  margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+<!-- 🔐 LOCK SCREEN -->
+<div class="box" id="lock">
+  <h2>🔐 Enter Password</h2>
+  <input type="password" id="pass" placeholder="Enter password">
+  <br>
+  <button onclick="checkPass()">Enter</button>
+</div>
+
+<div class="card">
+
+<h2>🎉 Birthday Puzzle 🎁</h2>
+
+<p id="question">
+Level 1: astrologer ka number daal 😤😂
+</p>
+
+<input type="text" id="answer" placeholder="Type answer">
+<br>
+
+<button onclick="check()">Submit</button>
+
+<p id="msg"></p>
+
+<!-- 🎁 GIFT BOX -->
+<div id="giftBox">
+  <h3>🎁 Final Gift Unlocked!</h3>
+
+  <div class="gift" onclick="openGift()">
+    📦 Click to Open Gift
+  </div>
+
+  <div id="giftContent">
+
+    <img src="sourav.jpg" width="200" style="border-radius:15px; margin-top:10px;">
+
+    <p style="font-weight:bold;">
+      munna bda pyara mmi ka dulara 💖
+    </p>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+
+function checkPass(){
+  let p = document.getElementById("pass").value;
+
+  if(p === "bday123"){
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  } else {
+    alert("❌ Wrong password 😈");
+  }
+}
+
+let level = 1;
+
+function check(){
+
+let ans = document.getElementById("answer").value.toLowerCase().trim();
+let msg = document.getElementById("msg");
+let q = document.getElementById("question");
+
+if(level === 1){
+    if(ans === "9872923415"){
+        msg.innerHTML = "Good good 😤😂 pr yeh to easy tha!";
+        q.innerHTML = "Level 2: phle anda aya tha ya murgi ? 😂😅";
+        level++;
+    } else {
+        msg.innerHTML = "❌ Try again 😈";
+    }
+}
+
+else if(level === 2){
+    if(ans === "charu"){
+        msg.innerHTML = "dekha hm jaha pr khde hote hai vhi se duniya shuru hoti hai 😂😏";
+        q.innerHTML = "Level 3: tune mera kya naam rkha hai ?";
+        level++;
+    } else {
+        msg.innerHTML = "❌ Wrong 😆";
+    }
+}
+
+else if(level === 3){
+    if(ans === "chhota don"){
+        msg.innerHTML = "bara mulko ki police hai mere pichhe 😂😅";
+        q.innerHTML = "Level 4: Mere sapno ka rajkumar kaun?";
+        level++;
+    } else {
+        msg.innerHTML = "❌ Try again 😈";
+    }
+}
+
+else if(level === 4){
+    if(ans === "abhimanyu"){
+        msg.innerHTML = "Kya baat boht achhe se janta hai tu use 😏 door reh usse 😤";
+        q.innerHTML = "Level 5: Maine tujhe kitne paise diye the last time?";
+        level++;
+    } else {
+        msg.innerHTML = "❌ Soch ke bol 😏";
+    }
+}
+
+else if(level === 5){
+    if(ans === "10 crore"){
+        msg.innerHTML = "hisaab ki pakki hu mai 😤😂";
+        
+        document.getElementById("giftBox").style.display = "block";
+        q.innerHTML = "🎁 Gift Unlocked!";
+    } else {
+        msg.innerHTML = "❌ Last chance 😌";
+    }
+}
+
+document.getElementById("answer").value = "";
+
+}
+
+function openGift(){
+  document.getElementById("giftContent").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
